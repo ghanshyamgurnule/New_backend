@@ -1,0 +1,39 @@
+server:
+   port: 8100
+  
+  
+   
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: Admin-Service
+        uri: http://localhost:8081/
+        predicates:
+        - Path=/admin/**
+        
+      - id: Coupon-Service
+        uri: http://localhost:8082/
+        predicates:
+        - Path=/coupon/**
+       
+      - id: User-Service
+        uri: http://localhost:8083/
+        predicates:
+        - Path=/user/** #,/users/**
+      - id: Cart-Service
+        uri: http://localhost:8084/
+        predicates:
+        - Path=/cart/**
+  
+        
+   #   - id: Api-Gateway
+  #      uri: http://localhost:8100/
+ #       predicates:
+#           - Path=/swagger-ui/**,/swagger-resources/**,/swagger-ui.html,/v2/api-docs,/webjars/**,/view/**
+  application:
+       name: Api-Gateway
+
+        
+        
+        
